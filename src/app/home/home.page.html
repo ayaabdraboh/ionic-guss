@@ -1,0 +1,44 @@
+<ion-header [translucent]="true" >
+    <ion-toolbar color="medium">
+      
+        <ion-title > تسجيل الدخول </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="text-align:center">
+      <img src="assets/img/ca.png"  style= " width: 254px;margin-top:50px">
+  </div>
+<!--  #form="ngForm" (ngSubmit)="userInfo(form)" -->
+  <ion-card  >
+      <form [formGroup]="theForm" (ngSubmit)="PostForm()" > 
+        <div class="borderradius top">
+            <ion-input class="border bottom" formControlName="user_name" name="user_name" type="text" placeholder="اسم المستخدم " ></ion-input>
+            <!-- <span class="has_error">
+                <p class="error" *ngIf="theForm.controls.user_name.valid  && (theForm.controls.user_name.dirty)">
+                    هذ الحقل مطصلوبا 
+                </p>
+              </span> -->
+              <!-- <br> -->
+            <ion-input class="border bottom" formControlName="password"  name="password" type="password" placeholder="كلمه المرور "  ></ion-input>
+            <!-- <span class="has_error">
+                <p class="error" *ngIf="!theForm.controls.password.valid  && (theForm.controls.password.dirty)">error password.</p>
+              </span> -->
+
+        </div> 
+           <!-- <ion-button class="ion-button" (click)="ToastError()" *ngIf="form.invalid">  تسجيل الدخول </ion-button>  -->
+           <!-- <ion-button class="ion-button" type="submit" *ngIf="!form.invalid" >  تسجيل الدخول </ion-button>  -->
+        
+           <!-- [disabled]="!theForm.valid" -->
+        <ion-button   color="medium" [disabled]="!theForm.valid" expand="full"  class="ion-button"  type="submit"  (click)=" ToastWrongPhone()" >تسجيل الدخول</ion-button>
+
+        <!-- <div class="alert alert-danger item element" role="alert" *ngIf="errorMessage">
+            <p *ngFor="let error of errorMessage;let i = index">{{error}}</p>
+          </div> -->
+
+          
+      </form>
+      
+  </ion-card>
+  
+</ion-content>

@@ -1,0 +1,67 @@
+//  //font cairo 
+ ion-app{
+  font: 12px 'Arial'   !important;
+  font-family: 'Arial';
+}
+ion-label, ion-input{
+ font-family: 'Arial' !important;
+}
+
+// image background
+ion-content {
+  --background: url('../../assets/img/home.png') center center / 100% 100% ;
+  --background-repeat: no-repeat;
+  --background-size: cover;
+}
+  //title background
+ion-title {
+  color: white;
+}
+ion-toolbar {
+  --background: #235691 !important;
+}
+form{
+  margin: 20px 30px;
+}
+//card
+ion-card{
+border-radius: 20px;
+    // height: 34%;
+    width: 80%;
+    bottom: -6%;
+    right: 6%;
+}
+ ///border bottom
+.border.bottom{
+  border: solid 1px #6b6a6a;
+    margin-top: 14px;
+    height: 38px;
+    border-radius: 7px;
+    --padding-start:15px;
+    // width: 90%;
+    // right: 1rem;
+    color: black;
+// background: linear-gradient(90deg, rgba(244,210,235,1) 0%, rgba(244,210,235,1) 0%, rgba(244,210,235,1) 24%, rgba(229,194,225,1) 52%, rgba(240,166,222,1) 100%);
+}
+
+//borderradius
+.borderradius.top{
+  margin-top: 28px;
+  // padding: 1px 1px;
+
+}
+//ion button
+.ion-button{
+  margin: 20px 0;
+  --border-radius: 7px;
+  height: 38px;
+  border-radius: 7px;
+}
+// ion-label, ion-input{
+// font-family: 'Cairo' !important;
+
+// }
+
+ion-input.ion-invalid.ion-touched {
+  border: 1px solid red !important;
+}

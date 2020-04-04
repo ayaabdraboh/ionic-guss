@@ -1,0 +1,156 @@
+ion-content {
+    --background: url('../../assets/img/home.png') center center / 100% 100% ;
+    --background-repeat: no-repeat;
+    --background-size: cover;
+  } 
+
+  .border.bottom{
+    border: solid 1px rgba(76, 76, 76, 0.486);
+    margin-top: 14px;
+    height: 38px;
+    border-radius: 7px;
+    /* width: 90%; */
+    /* right: 1rem; */
+    color: #000000;
+    margin-bottom: 15px;
+    color: #000000;
+  // background: linear-gradient(90deg, rgba(244,210,235,1) 0%, rgba(244,210,235,1) 0%, rgba(244,210,235,1) 24%, rgba(229,194,225,1) 52%, rgba(240,166,222,1) 100%);
+  }
+  
+  // .borderradius.top{
+  //   // margin-top: 28px;
+  //   // padding: 1px 1px;
+  
+  // }
+
+
+  .labb{
+    position: static;
+    right: 256px;
+    color: #000;
+    }
+    .ser{
+        color: rgb(245, 235, 235);
+        font-size: 13px;
+        text-align: right;
+        }
+
+    
+
+        .i{
+          border: solid 1px rgba(161, 152, 152, 0.486);
+          margin-top: 14px;
+          height: 38px;
+          border-radius: 7px;
+        }
+
+        .map img{
+          margin: 11px;
+        }
+        //buttom
+.ion-button{
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+    /* right: 0rem; */
+    /* left: 5rem; */
+    /* margin-bottom: 49px; */
+    margin-top: 30px;
+    display: list-item;
+    border-radius: 7px;
+    /* background: #30659A; */
+    /* border: solid 1px white;
+    border: solid 1px white;*/
+
+}
+.bg-white{
+  background-color: #fff;
+  padding:15px;
+  margin: 20px;
+  border-radius: 4px;
+}
+
+//transparent safaf
+.bg{
+  --ion-item-background: transparent!important;
+  // color: white;
+  direction: ltr;
+  text-align: right;
+}
+
+
+.labb{
+  position: static;
+  right: 256px;
+  // color: white;
+  }
+
+.ser{
+      color: black;
+      font-size: 13px;
+      text-align: right;
+    }
+
+.i{
+    border: solid 1px rgba(161, 152, 152, 0.486); 
+    margin-top: 14px;
+    height: 38px;
+    border-radius: 7px;
+    width: 90%;
+   right: 1rem;
+      }
+
+
+
+.select{
+  text-align: center;
+  max-width: 100%;
+  width: 70%;
+}
+
+.border.bottom{
+  order: solid 1px rgba(161, 152, 152, 0.486);
+  margin-top: 14px;
+  height: 38px;
+  border-radius: 7px;
+  width: 90%;
+  right: 1rem;
+  // color: #f5ebeb;
+  --padding-start: 10px;
+}
+
+.border{
+  border: solid 1px rgba(161, 152, 152, 0.486);
+  margin-top: 14px;
+  height: 38px;
+  border-radius: 7px;
+  // width: 66%;
+  right: 1rem;
+  // color: rgb(245, 235, 235);
+  font-size: 14px;
+}
+
+
+
+.calender-input{
+  .select{
+    position:relative;
+  }
+  .img-calender{
+    position: absolute;
+    z-index: 2;
+    left: 5px;
+    top: 8px;
+    width: 21px;
+  }
+}
+
+.serr{
+
+  font-size: 14px;
+  margin-left: 25px;
+}

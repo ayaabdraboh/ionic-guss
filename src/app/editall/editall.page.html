@@ -1,0 +1,430 @@
+<ion-header>
+  <ion-toolbar color="medium">
+  
+    <ion-buttons slot="start" class="back">
+      <ion-back-button> </ion-back-button>
+    </ion-buttons>
+  
+    <ion-title> تعديل الحاله</ion-title>
+ 
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+
+    <form [formGroup]="theForm" (ngSubmit)="PostForm()">
+      <ion-input value="{{id}}" formControlName="id" [hidden]="true">
+        </ion-input>
+      <h1>البيانات الشخصيه</h1>
+      <div class="borderradius top">
+        <ion-input class="border bottom" value="{{f_name}}" formControlName="f_name" name="f_name" type="text" placeholder="  الاسم الاول"
+          [class.activedone]="theForm.controls.f_name.valid" [class.activeNotdone]="!theForm.controls.f_name.valid">
+        </ion-input>
+        <span class="has_error"
+          *ngIf="!theForm.controls.f_name.valid && (theForm.controls.f_name.dirty || submitAttempt)">
+          <p class="error">{{getErrorMessage('f_name' , 'الاسم الاول')}}.</p>
+        </span>
+
+        <ion-input class="border bottom" value="{{fa_name}}"  formControlName="fa_name" name="fa_name" type="text" placeholder=" اسم الاب ">
+        </ion-input>
+        <span class="has_error"
+          *ngIf="!theForm.controls.fa_name.valid && (theForm.controls.fa_name.dirty || submitAttempt)">
+          <p class="error">{{getErrorMessage('fa_name' , 'الاسم الاب')}}.</p>
+        </span>
+
+        <ion-input class="border bottom"  value="{{fam_name}}"   formControlName="fam_name" name="fam_name" type="text"
+          placeholder="اسم العائله"></ion-input>
+        <span class="has_error"
+          *ngIf="!theForm.controls.fam_name.valid && (theForm.controls.fam_name.dirty || submitAttempt)">
+          <p class="error">{{getErrorMessage('fam_name' , 'الاسم العائله')}}.</p>
+        </span>
+
+      </div>
+
+      <!-- national -->
+      <h1> الجنسيه</h1>
+      <ion-list>
+        <ion-radio-group (ionChange)="RadioChangeeventCi($event)" value="{{nationality}}" name="nationality" formControlName="nationality">
+          <ion-item class="bg">
+            <ion-label>سعودى</ion-label>
+            <ion-radio value="1" checked="true"></ion-radio>
+          </ion-item>
+          <ion-item class="bg">
+            <ion-label>غير سعودى</ion-label>
+            <ion-radio value="0" name="nationality"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <span class="has_error"
+        *ngIf="!theForm.controls.nationality.valid && (theForm.controls.nationality.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('nationality' , '  الجنسيه')}}.</p>
+        </span>
+        <ion-item color="gray" class="i"  *ngIf="!citizen">
+          <ion-label class="ser"> الدوله </ion-label>
+          <ion-select class="select labb"  value="{{nationality_country}}"   formControlName="nationality_country">
+            <ion-select-option value="{{country.id.toString()}}" *ngFor="let country of countriesall?.countries">{{country.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        
+        <span class="has_error"
+          *ngIf="!theForm.controls.nationality_country.valid && (theForm.controls.nationality_country.dirty || submitAttempt)">
+          <p class="error">{{getErrorMessage('nationality_country' , 'الجنسيه')}}.</p>
+        </span>
+
+
+
+        <h1  *ngIf="!citizen"> نوع</h1>
+        <ion-radio-group (ionChange)="RadioChangeeventC($event)" value="{{number_type}}"  formControlName="number_type" name="number_type">
+          <ion-item class="bg"  *ngIf="!citizen">
+            <ion-label>رقم الاقامه</ion-label>
+            <ion-radio value="1" checked="true"></ion-radio>
+          </ion-item>
+          <ion-item class="bg"  *ngIf="!citizen">
+            <ion-label>رقم الحدود</ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <!-- <ion-input class="border bottom" value="{{id_number}}"  formControlName="id_number" name="id_number"  type="number" placeholder="الرقم "
+></ion-input> -->
+
+        <!-- <ion-input class="border bottom" value="{{mobile}}"  formControlName="mobile" name="mobile" type="number" placeholder=" الجوال"
+        *ngIf="!citizen"> </ion-input> -->
+
+      </ion-list>
+      <!-- <span class="has_error" *ngIf="!theForm.controls.number_type.valid && (theForm.controls.number_type.dirty || submitAttempt)">
+          <p class="error" >{{getErrorMessage('number_type' , 'الاقامة او الحدود')}}.</p>
+        </span> -->
+      <ion-list  *ngIf="citizen">
+        <h1> الهويه</h1>
+        <ion-radio-group (ionChange)="RadioChange($event)" value="{{0}}"  formControlName="id_number" name="id_number">
+          <ion-item class="bg">
+            <ion-label>رقم الهويه</ion-label>
+            <ion-radio value="0" checked="true"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <div class="borderradius top">
+        <ion-input class="border bottom" value="{{id_number}}" formControlName="id_number"  name="id_number"  minlength="10" maxlength="15"
+        placeholder="{{ (citizen)? 'رقم الهويه' : 'الرقم'}}">
+        </ion-input>
+      </div>
+
+      <span class="has_error"
+      *ngIf="!theForm.controls.id_number.valid && (theForm.controls.id_number.dirty || submitAttempt)">
+      <p class="error">{{getErrorMessage('id_number' , 'الرقم')}}.</p>
+    </span>
+
+      <ion-input class="border bottom"  value="{{mobile}}" formControlName="mobile"  name="mobile"  minlength="10" maxlength="15" placeholder=" الجوال +9665"></ion-input>
+      <span class="has_error"
+        *ngIf="!theForm.controls.mobile.valid && (theForm.controls.mobile.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('mobile' , 'الجوال')}}.</p>
+      </span>
+
+      <h1> الجنس</h1>
+      <ion-list>
+        <ion-radio-group (ionChange)="RadioChangeeventF($event)" name="gender" value="{{gender}}"  formControlName="gender">
+          <ion-item class="bg">
+            <ion-label>ذكر</ion-label>
+            <ion-radio value="1" checked="true"></ion-radio>
+          </ion-item>
+          <ion-item class="bg">
+            <ion-label>انثى </ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <span class="has_error"
+          *ngIf="!theForm.controls.gender.valid && (theForm.controls.gender.dirty || submitAttempt)">
+          <p class="error">{{getErrorMessage('gender' , 'الجنس')}}.</p>
+        </span>
+
+
+      </ion-list>
+      <div class="borderradius top">
+        <ion-input class="border bottom" formControlName="age"  value="{{age}}" name="age" type="number" placeholder="العمر "></ion-input>
+      </div>
+      <span class="has_error" *ngIf="!theForm.controls.age.valid && (theForm.controls.age.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('age' , 'العمر')}}.</p>
+      </span>
+
+
+      <h1> الاحداثيات</h1>
+      <ion-list>
+        <ion-radio-group (ionChange)="RadioChangeNQ($event)" value="{{coordinates_type}}"  name="coordinates_type" formControlName="coordinates_type">
+          <ion-item class="bg">
+            <ion-label>الان</ion-label>
+            <ion-radio value="0" checked="true"></ion-radio>
+          </ion-item>
+          <ion-item class="bg">
+            <ion-label>لاحقا </ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <span class="has_error"
+        *ngIf="!theForm.controls.coordinates_type.valid && (theForm.controls.coordinates_type.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('coordinates_type' , ' اللوكيشن')}}.</p>
+        </span>
+      </ion-list>
+      <div class="borderradius top">
+        <ion-row [hidden]="now">
+          <ion-col size="9">
+            <ion-input class="border"   formControlName="address"    type="text"
+              placeholder="قم بتحريك ايقونه الموقع لاختيار او استخدام زر موقعك الحالى " [value]="addressValue">
+            </ion-input>
+            <!-- <span class="has_error"
+            *ngIf="!theForm.controls.address.valid && (theForm.controls.address.dirty || submitAttempt)">
+            <p class="error">{{getErrorMessage('address' , 'اللوكيشن')}}.</p>
+          </span> -->
+            <ion-input class="border"  formControlName="latitude"  type="text" [hidden]="true" [value]="latitudeValue">
+            </ion-input>
+            <ion-input class="border"  formControlName="longitude" type="text"  [hidden]="true" [value]="longitudeValue">
+            </ion-input>
+
+          </ion-col>
+          <ion-col size="3">
+            <ion-col class="map" [routerLink]="['/maps']">
+              <img src="../../assets/img/map.jpeg" width="40">
+              <!-- <ion-icon name="map-sharp"></ion-icon> -->
+            </ion-col>
+          </ion-col>
+        </ion-row>
+
+      </div>
+
+
+      <ion-item color="gray" class="i">
+        <ion-label class="ser"> ~اختر المركز الصحى~ </ion-label>
+        <ion-select class="select"   value="{{phc_name}}" formControlName="phcs"  class="labb">
+          <ion-select-option value='{{ phcs.id}}' *ngFor="let phcs of medicalcenter?.phcs">{{phcs.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <span class="has_error" *ngIf="!theForm.controls.phcs.valid && (theForm.controls.phcs.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('phcs' , 'المركز الصحى')}}.</p>
+      </span>
+
+
+      <ion-item color="gray" class="i">
+        <ion-label class="ser"> ~اختر المنطقه ~ </ion-label>
+        <ion-select class="select"  value="{{region}}" formControlName="region"  class="labb" (ngModelChange)="getGovernment($event)">
+          <ion-select-option value='{{region.id}}' *ngFor="let region of regions?.regions">{{region.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+      <span class="has_error" *ngIf="!theForm.controls.region.valid && (theForm.controls.region.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('region' , 'المنطقه')}}.</p>
+      </span>
+
+
+
+      <ion-item color="gray" class="i">
+        <ion-label class="ser"> ~اختر المحافظه ~ </ion-label>
+        <ion-select class="select"  value="{{governorate}}" formControlName="governorate" class="labb">
+          <ion-select-option value='{{ governorate.id }}' *ngFor="let governorate of  governorates?.governorates">
+            {{governorate.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+ 
+      <span class="has_error" *ngIf="!theForm.controls.governorate.valid && (theForm.controls.governorate.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('governorate' , 'المحافظه')}}.</p>
+      </span>
+
+      <div class="borderradius top">
+        <ion-input class="border bottom" value="{{village}}" formControlName="village" name="village" type="text" placeholder="اسم الحى "></ion-input>    
+      </div>
+
+      <!-- <span class="has_error"
+        *ngIf="!theForm.controls.village.valid && (theForm.controls.village.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('village' , ' الحى ')}}.</p>
+      </span> -->
+
+
+      <h1> بيانات المرض</h1>
+      <ion-list>
+        <ion-radio-group (ionChange)="RadioChangeD($event)" value="{{disease_name}}" formControlName="disease"  [value]="selectDiseases">
+          <ion-item class="bg">
+            <ion-label>الملاريا</ion-label>
+            <ion-radio value="1" checked="true"></ion-radio>
+          </ion-item>
+
+          <ion-item class="bg">
+            <ion-label>حمى الضنك </ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+
+          <ion-item class="bg">
+            <ion-label>حمى الوادى المتصدع </ion-label>
+            <ion-radio value="3"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <span class="has_error"
+        *ngIf="!theForm.controls.disease.valid && (theForm.controls.disease.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('disease' , ' نوع المرض')}}.</p>
+        </span>
+      </ion-list>
+
+      <ion-item color="gray" class="i calender-input">
+        <ion-label class="ser"> تاريخ بدايه الاعراض </ion-label>
+        <ion-datetime class="select" displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY"
+        class="serr"   value="{{day_of_onset}}" formControlName="day_of_onset"  name="day_of_onset"></ion-datetime>
+        <img src="../../assets/img/calender.jpeg" class="img-calender">
+      </ion-item>
+      <span class="has_error" *ngIf="!theForm.controls.day_of_onset.valid && (theForm.controls.day_of_onset.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('day_of_onset' , 'تاريخ بدايه الاعراض')}}.</p>
+      </span>
+
+
+      <ion-item color="gray" class="i calender-input">
+        <ion-label class="ser"> تاريخ التشخيص </ion-label>
+        <ion-datetime class="select" displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY"
+        class="serr" value="{{date_of_diagnosis}}" formControlName="date_of_diagnosis"  name="date_of_diagnosis"></ion-datetime>
+        <img src="../../assets/img/calender.jpeg" class="img-calender">
+      </ion-item>
+      <span class="has_error" *ngIf="!theForm.controls.date_of_diagnosis.valid && (theForm.controls.date_of_diagnosis.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('date_of_diagnosis' , 'تاريخ التشخيص')}}.</p>
+      </span>
+
+
+      <ion-item color="gray" class="i">
+        <ion-label *ngIf="selectDiseases=='1'||selectDiseases=='2'" class="ser"> ~اختر النوع ~ </ion-label>
+        <ion-label *ngIf="selectDiseases=='3'" class="ser"> الترميز الدولي العاشر </ion-label>
+        <ion-select class="select"    value='{{disease_type}}' formControlName="disease1_type" name="disease1_type_name" *ngIf="selectDiseases=='1'" class="labb">
+          <ion-select-option value='{{ diseses1.id}}' *ngFor="let diseses1 of diseasesall?.types">{{diseses1.name}}
+          </ion-select-option>
+
+        </ion-select>
+        <ion-select class="select"   value='{{disease_type}}' formControlName="disease2_type"  name="disease2_type_name" *ngIf="selectDiseases=='2'" class="labb">
+          <ion-select-option value='{{ diseses2.id}}' *ngFor="let diseses2 of diseasesall?.types">{{diseses2.name}}
+          </ion-select-option>
+
+        </ion-select>
+        <ion-select class="select"  value='{{disease_type}}' formControlName="disease3_type"    name="disease3_type" *ngIf="selectDiseases=='3'" class="labb">
+          <ion-select-option value='{{ diseses3.id}}' *ngFor="let diseses3 of diseasesall?.types">{{diseses3.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!-- <span class="has_error"
+      *ngIf="(!theForm.controls.disease1_type.valid && (theForm.controls.disease1_type.dirty || submitAttempt)) &&
+      (!theForm.controls.disease2_type.valid && (theForm.controls.disease2_type.dirty || submitAttempt)) &&
+      (!theForm.controls.disease3_type.valid && (theForm.controls.disease3_type.dirty || submitAttempt))">
+      <p class="error">{{getErrorMessage('disease1_type' , ' النوع ')}}.</p>
+    </span> -->
+
+    
+      <!-- <span class="has_error" *ngIf="!theForm.controls.disease1_type.valid && (theForm.controls.disease1_type.dirty || submitAttempt)">
+        <p class="error">{{getErrorMessage('disease1_type' , ' النوع')}}.</p>
+      </span> -->
+
+    
+      <ion-item color="gray" class="i">
+        <ion-label class="ser"> ~ وضع الحاله ~ </ion-label>
+        <ion-select class="select"  value="{{status_nu}}" formControlName='case_status'  class="labb">
+          <!-- <ion-select-option value='{{ case.status_ar}}' *ngFor="let case of showCasesall?.cases">{{case.status_ar}}
+          </ion-select-option> -->
+          <ion-select-option  value='0'>
+             مشتبه بيها
+          </ion-select-option>
+          <ion-select-option  value='1'>
+            مؤكده            
+            </ion-select-option>
+          <ion-select-option value='2'>
+            سلبيه              
+          </ion-select-option>
+
+        </ion-select>
+      </ion-item>
+
+
+      <h1 *ngIf="selectDiseases=='1'"> قدوم المملكه من الخارج خلال الشهر السابق علي بدايه الاعراض</h1>
+      <h1 *ngIf="selectDiseases=='3'||selectDiseases=='2'"> قدوم للمملكة من الخارج خلال الاسبوعين السابقين على بداية
+        الأعراض</h1>
+      <ion-list>
+        <ion-radio-group (ionChange)="RadioChangeYY($event)" *ngIf="selectDiseases=='1'" value="{{disease1_arrival}}"  formControlName="disease1_arrival" name="disease1_arrival">
+          <ion-item class="bg">
+            <ion-label>لا</ion-label>
+            <ion-radio value="1" checked="true"></ion-radio>
+          </ion-item>
+          <ion-item class="bg">
+            <ion-label>نعم </ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <ion-radio-group (ionChange)="RadioChangeYY($event)" *ngIf="selectDiseases=='2'" value="{{disease2_arrival}}"  formControlName="disease2_arrival" name="disease2_arrival">
+          <ion-item class="bg">
+            <ion-label>لا</ion-label>
+            <ion-radio value="1" checked="true"></ion-radio>
+          </ion-item>
+          <ion-item class="bg">
+            <ion-label>نعم </ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <ion-radio-group (ionChange)="RadioChangeYY($event)" *ngIf="selectDiseases=='3'" value="{{disease_arrival_no}}"  formControlName="disease3_arrival" name="disease3_arrival">
+          <ion-item class="bg">
+            <ion-label>لا</ion-label>
+            <ion-radio value="1" checked="true"></ion-radio>
+          </ion-item>
+          <ion-item class="bg">
+            <ion-label>نعم </ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <ion-item color="gray" class="i" *ngIf="country2 && selectDiseases == '1' ">
+          <ion-label class="ser"> الدوله </ion-label>
+          <ion-select class="select"  value="{{disease1_country}}"   formControlName="disease1_country" name="disease1_country"  class="labb">
+            <ion-select-option value='{{ country.id}}' *ngFor="let country of countriesall?.countries">{{country.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item color="gray" class="i" *ngIf="country2 && selectDiseases == '2'">
+          <ion-label class="ser"> الدوله </ion-label>
+          <ion-select class="select"  value="{{disease2_country}}"   formControlName="disease2_country" name="disease2_country"  class="labb">
+            <ion-select-option value='{{ country.id}}' *ngFor="let country of countriesall?.countries">{{country.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item color="gray" class="i" *ngIf="country2 && selectDiseases == '3'">
+          <ion-label class="ser"> الدوله </ion-label>
+          <ion-select class="select"  value="{{disease3_country}}"   formControlName="disease3_country" name="disease3_country"  class="labb">
+            <ion-select-option value='{{ country.id}}' *ngFor="let country of countriesall?.countries">{{country.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- <span class="has_error"
+        *ngIf="(!theForm.controls.disease1_country.valid && (theForm.controls.disease1_country.dirty || submitAttempt)) &&
+        (!theForm.controls.disease2_country.valid && (theForm.controls.disease2_country.dirty || submitAttempt)) &&
+        (!theForm.controls.disease3_country.valid && (theForm.controls.disease3_country.dirty || submitAttempt))">
+        <p class="error">{{getErrorMessage('disease1_type' , ' الدوله ')}}.</p>
+      </span> -->
+        <!-- <span class="has_error" *ngIf="!theForm.controls.disease1_country.valid && (theForm.controls.disease1_country.dirty || submitAttempt)">
+          <p class="error">{{getErrorMessage('disease1_country' , ' الدوله')}}.</p>
+        </span> -->
+  
+      </ion-list>
+
+      <div *ngIf="!theForm.valid" class="a">
+        يرجى التاكد من ملئ كافه الحقول.
+      </div>
+
+
+      <ion-row>
+        <ion-col col-6>
+
+          <ion-button class="ion-button" color="medium" expand="full" type="submit"> ارسال</ion-button>
+
+        </ion-col>
+
+      </ion-row>
+
+    </form>
+
+  </ion-card>
+</ion-content>

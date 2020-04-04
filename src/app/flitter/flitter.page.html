@@ -1,0 +1,69 @@
+
+<ion-header>
+  <ion-toolbar color="medium">
+    
+      <ion-buttons slot="start" class="back" >
+          <ion-back-button > </ion-back-button>
+      </ion-buttons>
+    
+      <ion-title >عرض الحالات</ion-title>
+
+      <ion-buttons slot="end"  class="icons">
+        <ion-icon name="person-add-outline"  (click)="addcase()"></ion-icon>
+        <ion-icon name="log-out-outline"  class="logout" (click)="logout()"></ion-icon>   
+    </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- <ion-row>
+      <ion-col size="6">
+        <ion-item color="gray" class="i" >
+            <ion-label class="ser">filter by </ion-label>
+            <ion-select ngModel name="diseses" class="labb" (ionChange)="filtterby($event)">
+              <ion-select-option value="مشتبه بها"> مشتبه بها</ion-select-option>  
+              <ion-select-option value="مؤكده">مؤكده</ion-select-option>  
+              <ion-select-option value="سلبيه">سلبيه</ion-select-option>  
+              </ion-select>
+        </ion-item>
+      </ion-col>
+       <ion-col size="6"></ion-col> -->
+   <!-- </ion-row> --> 
+
+    <ion-grid >
+      <ion-row class="aya" >
+          <ion-col size="5" class="sa"> الاسم</ion-col>
+          <ion-col size="2" class="sa"> العمر</ion-col> 
+          <!-- <ion-col size="2" class="sa"> اللوكشن</ion-col>  -->
+          <ion-col size="1" class="sa"> 
+            <ion-icon name="create" class="b edit"></ion-icon>
+          </ion-col>   
+          <ion-col size="1" class="sa">
+            <ion-icon name="trash-outline" class="b trash"  ></ion-icon>
+           </ion-col>
+          <ion-col size="3" class="sa">تعديل الحاله</ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid >
+      <ion-row class="aya"   *ngFor="let patients of showCasesall?.cases">
+        <ion-col size="5" class="sa" text-wrap> {{patients.name}}</ion-col>
+        <ion-col size="2" class="sa"> {{patients.age}}</ion-col> 
+          <!-- <ion-col size="2" class="sa"> {{patients.region_name}}</ion-col>  -->
+          <ion-col size="1" class="sa" (click)=" editpatpatientf(patients.id)" >
+              <ion-icon name="create" class="b edit"></ion-icon>
+          </ion-col>   
+          <ion-col size="1" class="sa" > 
+            <ion-button class="sb"  (click)=" delete(patients.id)" [disabled]='!canDelete'> 
+                <ion-icon name="trash-outline" class="b trash"  ></ion-icon>
+          </ion-button>
+          </ion-col>
+          <ion-col size="3" class="sa"> {{patients.status_ar}}</ion-col>       
+      </ion-row>
+      
+    </ion-grid>
+
+</ion-content>

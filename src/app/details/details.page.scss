@@ -1,0 +1,249 @@
+// ion-app{
+//   // font: 12px 'Cairo'   !important;
+//   // font-family: 'Cairo';
+// }
+
+// ion-label, ion-input{
+// //  font-family: 'Cairo' !important;
+// }
+
+// image background
+ion-content {
+    --background: url('../../assets/img/home1.png') center center / 100% 100% ;
+    --background-repeat: no-repeat;
+    --background-size: cover;
+  } 
+
+  ion-card {
+    background-color: #003748;
+    border-radius: 5px;
+    /* width: 94%; */
+    bottom: 0%;
+    margin-top: 17px;
+    margin-bottom: 20px;
+    margin: 20px 25px;
+    
+  }
+
+  .border.bottom{
+    order: solid 1px rgba(161, 152, 152, 0.486);
+    margin-top: 14px;
+    height: 38px;
+    border-radius: 7px;
+    width: 90%;
+    right: 1rem;
+    color: #f5ebeb;
+    --padding-start: 10px;
+  // background: linear-gradient(90deg, rgba(244,210,235,1) 0%, rgba(244,210,235,1) 0%, rgba(244,210,235,1) 24%, rgba(229,194,225,1) 52%, rgba(240,166,222,1) 100%);
+  }
+  
+  // .borderradius.top{
+  //   // margin-top: 28px;
+  //   // padding: 1px 1px;
+  
+  // }
+
+  ion-card h1 {
+    color: white;
+    font-size: 13px;
+    padding-right: 13px;
+    margin-top: 12px;
+    margin-bottom: 0px;
+    font-size: large;
+  }
+
+  .map img{
+    margin: 11px;
+  }
+
+
+  .border{
+    border: solid 1px rgba(161, 152, 152, 0.486);
+    margin-top: 14px;
+    height: 38px;
+    border-radius: 7px;
+    // width: 66%;
+    right: 1rem;
+    color: rgb(245, 235, 235);
+    font-size: 14px;
+  }
+  
+     
+  .labb{
+    position: static;
+    right: 256px;
+    color: white;
+    }
+
+  .ser{
+        color: rgb(245, 235, 235);
+        font-size: 13px;
+        text-align: right;
+      }
+
+  .i{
+      border: solid 1px rgba(161, 152, 152, 0.486); 
+      margin-top: 14px;
+      height: 38px;
+      border-radius: 7px;
+      width: 90%;
+     right: 1rem;
+        }
+
+        ion-button{
+            width: 20%;
+            left: -2rem;
+            bottom: -1rem;
+            position: relative;
+            height: 38px;
+            border-radius: 7px;
+          background: #30659A;
+          border: solid 1px black;
+          color: white;
+          
+          }
+
+
+
+ion-list.md,ion-list.ios{
+  background-color: transparent!important;
+}
+
+//transparent safaf
+.bg{
+  --ion-item-background: transparent!important;
+  color: white;
+  direction: ltr;
+  text-align: right;
+}
+.alert-danger{
+  margin: 0 20px;
+    color: #fff;
+}
+.ion-button{
+  width: 49%;
+  height: 42px;
+  border-radius: 10px;
+  background: #30659A;
+  border: solid 1px black;
+  color: white;
+  margin-bottom: 20px;
+  left: 0;
+  margin: 2px auto;
+  margin-bottom: 20px;
+
+}
+ion-radio-group{
+  ion-label{
+    padding-right:1rem;
+  }
+  // ion-item{
+  //   border: 1px solid #284957;
+  //   margin: 1rem;
+  //   border-radius: 11px;
+  // }
+}
+ion-row ion-col {
+    left: -16rem;
+    color: black;
+    font-size: 35px;
+    top: -6px;
+    position: inherit;
+
+}
+// .map {
+//   left: -17rem;
+//     color: black;
+//     font-size: 35px;
+//     top: -6px;
+// }
+
+
+ion-title {
+  color: white;
+  // margin-right: -11rem;
+}
+
+ion-toolbar {
+  --background: #235691 !important;
+
+}
+
+
+.select{
+  text-align: center;
+  max-width: 100%;
+  width: 70%;
+}
+
+
+
+.back{
+  left:-6px;
+  color: white;
+  font-size: 27px;
+  margin-bottom: -14px;
+    margin-top: -7px;
+
+}
+
+.icons{
+  color: white;
+    font-size: x-large;
+    margin-left: 19px;
+}
+
+ion-input.ng-invalid.ng-touched {
+  border: 1px solid red !important;
+}
+
+span.has_error{
+  color: #d80f0f;
+  font-size: 13px;
+  margin-inline-start: 50px;
+  height: 23px;
+  padding: 3px 0;
+  display: block;
+  background: white;
+  p{
+      margin: 0;
+  }
+}
+
+p.error{
+  color: #b50e0e;
+  font-size: 13px;
+  display: block;
+}
+.logout{
+  margin-right: 15px;
+}
+
+.calender-input{
+  .select{
+    position:relative;
+  }
+  .img-calender{
+    position: absolute;
+    z-index: 2;
+    left: 5px;
+    top: 8px;
+    width: 21px;
+  }
+}
+.a{
+  color: #d80f0f;
+  font-size: 13px;
+  margin-inline-start: 50px;
+  height: 23px;
+  padding: 3px 0;
+  display: block;
+  background: white;
+  
+}
+
+.serr{
+  color: #f5ebeb;
+  font-size: 14px;
+  margin-left: 25px;
+}

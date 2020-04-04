@@ -1,0 +1,101 @@
+// image background
+ion-content {
+    --background: url('../../assets/img/home.png') center center / 100% 100% ;
+    --background-repeat: no-repeat;
+    --background-size: cover;
+  } 
+
+  .logout{
+    margin-right: 11px;
+  }
+  .ser{
+    color: rgb(7, 1, 1);
+    font-size: 13px;
+    text-align: right;
+    padding-bottom: 8px;
+    
+    }
+    .edit{
+      color:green
+    }
+    .trash{
+      color:red
+    }
+
+    .i{
+      // margin-top: 14px;
+      height: 38px;
+      border-radius: 7px;
+      width: 90%;
+      right: 1rem;
+      background-color: white;
+    }
+.aya {
+  color: #ffffff;
+    background-color: #143e44;
+    padding: 0 3px;
+    font-size: 15px;
+    border-bottom: 1px solid #c7c7c7;
+}
+.sa{
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  // line-height: 30px;
+  padding: 13px 2px 0px;
+  border-left: 1px solid #ddd;
+}
+
+.b {
+    // background-color: red;
+    font-size: 20px;
+    color: black;
+}
+
+
+ion-title {
+    color: white;
+    // margin-right: -11rem;
+  }
+  
+  ion-toolbar {
+    --background: #235691 !important;
+  
+  }
+
+
+.back{
+    left:-6px;
+    color: white;
+    font-size: 27px;
+    margin-bottom: -14px;
+  }
+  
+  .icons{
+    color: white;
+      font-size: x-large;
+      margin-left: 15px;
+  }
+
+
+  .edit{
+    color:green;
+    margin-top: 0px;
+  }
+  .trash{
+    color:red
+  }
+  ion-col{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sb{
+  
+    padding: 0rem;
+    margin: 0rem;
+    --background: transparent!important;
+    --padding-start: 3px;
+    --padding-end: 3px;
+    height: 24px;
+  }
